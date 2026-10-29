@@ -3,30 +3,34 @@
 #include <time.h>
 #include <math.h>
 
-int main(void) {
+int main() {
     int randomNum;
-    double number, product;
+    double number, product, ceilingVal, floorVal, powerVal, sqrtVal;
 
-    srand((unsigned int)time(NULL));
+    srand(time(NULL));
 
-    printf("Enter a number: ");
-    if (1 != scanf("%lf", &number)) {
-        printf("Invalid input. Please enter a valid number.\n");
-        return 1;
-    }
+    printf("Enter a number:                  ");
+    scanf("%lf", &number);
 
-    printf("The number is: %.2f\n", number);
+    printf("\nEntered number:                  %.2f\n", number);
 
     randomNum = (rand() % 35) + 3;
-    printf("The random number is: %d\n", randomNum);
+    printf("Random number (3 to 37):         %d\n", randomNum);
 
     product = number * randomNum;
-    printf("The product of the two numbers is: %.2f\n", product);
+    printf("Product of the two numbers:      %.2f\n", product);
 
-    printf("The ceiling of the random number is: %.2f\n", ceil(randomNum));
-    printf("The floor of the product is: %.2f\n", floor(product));
-    printf("%.2f raised to the power of %d is: %.2f\n", number, randomNum, pow(number, randomNum));
-    printf("The square root of the random number is: %.2f\n", sqrt(randomNum));
+    ceilingVal = ceil(randomNum);
+    printf("Ceiling of random number:        %.2f\n", ceilingVal);
+
+    floorVal = floor(product);
+    printf("Floor of product:                %.2f\n", floorVal);
+
+    powerVal = pow(number, randomNum);
+    printf("Number raised to random power:   %.2f\n", powerVal);
+
+    sqrtVal = sqrt(randomNum);
+    printf("Square root of random number:    %.2f\n", sqrtVal);
 
     return 0;
 }

@@ -6,7 +6,7 @@ A clean, structured C implementation demonstrating standard library mathematical
 
 ## Control Flow & Execution Pipeline
 
-The program coordinates data acquisition, random number seeding, and mathematical evaluation sequentially within `main(void)`:
+The program coordinates data acquisition, random number seeding, and mathematical evaluation sequentially within `main()`:
 
 ```text
                         [ Execution Start ]
@@ -34,7 +34,7 @@ The program coordinates data acquisition, random number seeding, and mathematica
                        [ sqrt(randomNum) ]
                                  |
                                  v
-                         [ Output Results ]
+                     [ Output Aligned Results ]
 ```
 
 ---
@@ -73,7 +73,7 @@ Compiled with `gcc -Wall -Wextra -Werror` and verified against controlled inputs
 
 ## Compilation & Execution
 
-### Using GCC (MinGW / Linux / macOS):
+### Using GCC (MinGW / Code::Blocks / Linux / macOS):
 ```bash
 gcc -Wall -Wextra -Werror Simple-c-math-and-random-library-operations.c -o math_ops -lm
 ./math_ops
@@ -81,14 +81,15 @@ gcc -Wall -Wextra -Werror Simple-c-math-and-random-library-operations.c -o math_
 
 ### Sample Interactive Output:
 ```text
-Enter a number: 5.5
-The number is: 5.50
-The random number is: 16
-The product of the two numbers is: 88.00
-The ceiling of the random number is: 16.00
-The floor of the product is: 88.00
-5.50 raised to the power of 16 is: 2795147814.77
-The square root of the random number is: 4.00
+Enter a number:                  5.5
+
+Entered number:                  5.50
+Random number (3 to 37):         16
+Product of the two numbers:      88.00
+Ceiling of random number:        16.00
+Floor of product:                88.00
+Number raised to random power:   2795147814.77
+Square root of random number:    4.00
 ```
 
 ---
@@ -97,5 +98,4 @@ The square root of the random number is: 4.00
 Scanned using static analysis security scanner:
 - Unsafe unbounded calls (`gets`, bare `scanf("%s")`): **0 findings**
 - Shell injection / pipe traps: **0 findings**
-- PRNG initialization: Seeded once using `time(NULL)` with cast to `unsigned int`.
-- Input validation: Checked return status on `scanf`.
+- PRNG initialization: Seeded once at program start using `srand(time(NULL))`.
